@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Wish List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/list_styles.css')}}">
+</head>
+    <body>
+        <h1>My Wish List 🎁</h1>
+        <form id="gift-form" method="POST" action="{{ url_for('my_list') }}">
+            <input type="hidden" name="action" id="form-action" value="save">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gift</th>
+                        <th>Details</th>
+                        <th>Price</th>
+                        <th>Link</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Existing Gifts -->
+                    {% for gift in gifts %}
+                    <tr>
+                        <td><input type="text" name="gift_{{ gift.id }}" value="{{ gift.gift_name }}"></td>
+                        <td><input type="text" name="details_{{ gift.id }}" value="{{ gift.details }}"></td>
+                        <td><input type="text" name="price_{{ gift.id }}" value="{{ gift.price }}"></td>
+                        <td><input type="text" name="link_{{ gift.id }}" value="{{ gift.link }}"></td>
+                        <td><button type="button" class="button delete-btn" onclick="deleteGift({{ gift.id }})">Delete</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        
+            <div class="nav-container">
+                <div class="left-buttons">
+                    <a href="{{ url_for('family_list') }}" class="button logout">Back to Family List</a> 
+                    <a href="{{ url_for('logout') }}" class="button logout">Logout</a> 
+                </div>
+                <div class="right-buttons"> 
+                    <button type="button" class="button" onclick="addNewGift()">Add New Gift</button>
+                    <button type="submit" class="button" onclick="submitForm('save')">Save Changes</button>
+                </div>
+            </div>                     
+        </form>
+        
+    
+
+        <script>
+            function submitForm(action) {
+                    // Set the form action
+                document.getElementById('form-action').value = action;
+
+                // Get all price inputs and validate them
+                const priceInputs = document.querySelectorAll('input[name^="price_"], input[name="new_price[]"]');
+
+                // Check each price
+                for (const input of priceInputs) {
+                    if (!validatePrice(input)) {
+                        return false; // Stop form submission if validation fails
+                    }
+                }
+
+                // Submit the form
+                document.getElementById('gift-form').submit();
+            }
+
+            function deleteGift(giftId) {
+                if (confirm('Are you sure you want to delete this gift?')) {
+                    fetch(`/delete_gift/${giftId}`, {
+                        method: 'POST',  // Ensure using POST method
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'same-origin',  // Important for session 
+                        body: JSON.stringify({ gift_id: giftId })
+                    })
+                        .then(response => {
+                            if (response.ok) {
+                                // Find and remove the row from the table
+                                const row = document.querySelector(`input[name="gift_${giftId}"]`).closest('tr');
+                                row.remove();
+                            } else {
+                                alert('Error deleting gift. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error deleting gift. Please try again.');
+                        });
+                }
+            }
+
+            function addNewGift() {
+                    const tempId = -Date.now(); 
+                    const tableBody = document.querySelector("table tbody");
+                    const newRow = document.createElement("tr");
+                    const timestamp = Date.now(); // Use timestamp as a unique ID for new rows
+                    newRow.innerHTML = `
+                        <td><input type="text" name="new_gift_${timestamp}" placeholder="Gift" required></td> 
+                        <td><input type="text" name="new_details_${timestamp}" placeholder="Details"></td> 
+                        <td><input type="text" name="new_price_${timestamp}" placeholder="Price"></td> 
+                        <td><input type="text" name="new_link_${timestamp}" placeholder="Link"></td> 
+                        <td><button type="button" class="button delete-btn" onclick="deleteNewRow(this)">Delete</button></td> 
+                    `;
+                    tableBody.insertBefore(newRow, document.getElementById("new-gift-placeholder"));
+                    const placeholder = document.getElementById("new-gift-placeholder"); 
+                    placeholder.insertAdjacentElement('afterend', newRow); // Inserts new row after the placeholder }
+            }
+
+            function deleteNewRow(button) {
+                button.closest("tr").remove();
+            }
+
+            // Frontend validation function to check price
+            function validatePrice(priceInput) {
+                // Remove currency symbol and whitespace
+                const priceValue = priceInput.value.replace(/[£\s]/g, '');
+
+                // Convert to number and check if it's over 150
+                if (priceValue && !isNaN(priceValue) && parseFloat(priceValue) > 150) {
+                    const confirmHigh = confirm('Are you sure you want to add a gift over £150?');
+                    if (!confirmHigh) {
+                        priceInput.value = ''; // Clear the input if user cancels
+                        return false;
+                    }
+                }
+                return true;
+            }
+            // Add real-time validation as user types
+            function setupPriceValidation() {
+                document.addEventListener('input', function (e) {
+                    if (e.target.name.includes('price_') || e.target.name === 'new_price[]') {
+                        validatePrice(e.target);
+                    }
+                });
+            }
+
+                // Call setup when document loads
+                document.addEventListener('DOMContentLoaded', setupPriceValidation);
+        </script>
+
+        
+    </body>
+
+</html>

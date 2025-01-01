@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Family Gift List 🎁</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/list_styles.css')}}">
+</head>
+
+<body>
+    <h1>Family Gift List 🎁</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Gift Recipient</th>
+                <th>Gift</th>
+                <th>Details</th>
+                <th>Price</th>
+                <th>Link</th>
+                <th>Purchase Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if gifts %}
+                {% for gift in gifts %}
+                    <tr class="{{ 'purchased' if gift.purchased_by_id and gift.purchased_by != 'No-one has bought this yet'}}">
+                        <td>{{ gift.recipient.username}}</td>
+                        <td>{{ gift.gift_name }}</td>
+                        <td>{{ gift.details }}</td>
+                        <td>
+                            {% if gift.price %}
+                                £{{ gift.price|replace('Â', '') }}
+                            {% else %}
+                                No price set
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if gift.link %}
+                                <a href="{{ gift.link }}" target="_blank" class="btn btn-link">
+                                    <i class="fas fa-external-link-alt"></i> View
+                                </a>
+                            {% else %}
+                                No link available
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ url_for('mark_gift_purchased', gift_id=gift.id) }}" id="form{{ gift.id }}">
+                                <select name="purchased_by_{{ gift.id }}" class="form-control" onchange="this.form.submit()">
+                                    <option value="">No-one has purchased this yet</option>
+                            
+                                    <!-- Option for a Family Member -->
+                                    {% for member in family_members %}
+                                    <option value="{{ member.id }}" {% if gift.purchased_by_id==member.id %}selected{% endif %}>
+                                        {{ member.username }} 
+                                    </option>
+                                    {% endfor %}
+                            
+                                    <!-- Option for Current User -->
+                                    {% if gift.purchased_by == current_user.username %}
+                                    <option value="{{ current_user.id }}" selected>You ({{ current_user.username }}) have purchased this</option>
+                                    {% endif %}
+                                </select>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% if not gifts %}
+                    <tr class="no-gifts">
+                        <td colspan="6">No gifts listed yet</td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    
+                    
+        <div class="nav-links">
+            <a href="{{ url_for('my_list') }}" class="button">My Wish List</a>
+            <a href="#" id="saveChangesButton" class="button">Save Changes</a>
+            <a href="{{ url_for('add_family_member') }}" class="button">Add Family Member</a>
+            <a href="{{ url_for('logout') }}" class="button logout">Logout</a>
+        </div>
+    
+
+
+</body>
+
+</html>

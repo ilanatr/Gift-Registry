@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Family Gift List Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-50">
+    <div class="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg">
+            <div>
+                <h1 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    Create Your Family Group 🎁
+                </h1>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Set up your family group and start sharing wish lists
+                </p>
+            </div>
+
+            <form class="mt-8 space-y-6" method="POST" action="{{ url_for('register_create_family') }}">
+                <!-- Family Details Section -->
+                <div class="rounded-md shadow-sm -space-y-px bg-gray-50 p-4 mb-6">
+                    <h2 class="text-xl font-bold mb-4 text-gray-700">Family Details</h2>
+                    <div class="mb-4">
+                        <label for="family_name" class="block text-sm font-medium text-gray-700">Family Name</label>
+                        <input type="text" id="family_name" name="family_name"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            placeholder="e.g., The Brandos" required>
+                    </div>
+                </div>
+
+                <!-- Primary Admin Account Section -->
+                <div class="rounded-md shadow-sm -space-y-px bg-gray-50 p-4">
+                    <h2 class="text-xl font-bold mb-4 text-gray-700">User Account</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                            <input type="text" id="username" name="username"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                placeholder="Choose a username" required>
+                        </div>
+
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                            <input type="password" id="password" name="password"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                placeholder="Choose a password" required>
+                        </div>
+
+                        <div>
+                            <label for="confirm_password" class="block text-sm font-medium text-gray-700">Confirm
+                                Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                placeholder="Re-enter your password" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Create Family Group
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <a href="{{ url_for('login') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Already have an account? Log In
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

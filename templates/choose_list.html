@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Your Gift List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_out_styles.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎁 Welcome {{ current_user.username }}!</h1>
+        <p>Where would you like to go?</p>
+        <a href="{{ url_for('my_list') }}" class="button">See My Gift List</a>
+        <a href="{{ url_for('family_list') }}" class="button">See Family Gift List</a>
+        <a href="{{ url_for('register_create_family') }}">Create a Family</a>
+        <br>
+        <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+{
+    "families": [
+        {
+            "name": "Test Family",
+            "members": [
+                {
+                    "username": "Mum",
+                    "is_admin": true,
+                    "gifts": [
+                        {
+                            "gift_name": "Wireless Noise-Cancelling Headphones",
+                            "details": "Sony WH-1000XM4 preferred, in Silver or Black.",
+                            "price": "£279.99",
+                            "link": "https://www.amazon.co.uk/Sony-WH-1000XM4"
+                        },
+                        {
+                            "gift_name": "Leather Wallet",
+                            "details": "Preferably black or brown, RFID-protected.",
+                            "price": "£35.00",
+                            "link": "https://www.johnlewis.com/leather-wallet"
+                        }
+                    ]
+                },
+                {
+                    "username": "Dad",
+                    "is_admin": true,
+                    "gifts": [
+                        {
+                            "gift_name": "Kindle Paperwhite",
+                            "details": "With adjustable warm light, a protective cover would be ideal.",
+                            "price": "£129.99",
+                            "link": "https://www.amazon.co.uk/kindle-paperwhite"
+                        },
+                        {
+                            "gift_name": "Perfume",
+                            "details": "Jo Malone Peony & Blush Suede, 100ml.",
+                            "price": "£105.00",
+                            "link": "https://www.jomalone.co.uk/perfume"
+                        }
+                    ]
+                },
+                {
+                    "username": "Eldest Child",
+                    "is_admin": false,
+                    "gifts": [
+                        {
+                            "gift_name": "Lego Star Wars Set",
+                            "details": "Any of the big Star Wars sets, preferably the Millennium Falcon.",
+                            "price": "£139.99",
+                            "link": "https://www.lego.com/star-wars"
+                        },
+                        {
+                            "gift_name": "Nintendo Switch Game",
+                            "details": "Zelda: Tears of the Kingdom or Mario Kart.",
+                            "price": "£49.99",
+                            "link": "https://www.nintendo.co.uk"
+                        }
+                    ]
+                },
+                {
+                    "username": "Middle Child",
+                    "is_admin": false,
+                    "gifts": [
+                        {
+                            "gift_name": "Headphones",
+                            "details": "On-ear, any colour but pink, budget under £50.",
+                            "price": "£45.00",
+                            "link": "https://www.currys.co.uk/headphones"
+                        },
+                        {
+                            "gift_name": "Harry Potter Book Set",
+                            "details": "The full hardcover set would be amazing.",
+                            "price": "£59.99",
+                            "link": "https://www.waterstones.com/harry-potter-box-set"
+                        }
+                    ]
+                },
+                {
+                    "username": "Youngest Child",
+                    "is_admin": false,
+                    "gifts": [
+                        {
+                            "gift_name": "Art Supplies",
+                            "details": "Sketchpad, watercolours, and brushes, any brand is fine.",
+                            "price": "£25.00",
+                            "link": "https://www.hobbycraft.co.uk/art-supplies"
+                        },
+                        {
+                            "gift_name": "Board Game",
+                            "details": "Catan or Ticket to Ride, for family game nights.",
+                            "price": "£39.99",
+                            "link": "https://www.board-game.co.uk"
+                        }
+                    ]
+                },
+                {
+                    "username": "Uncle",
+                    "is_admin": false,
+                    "gifts": [
+                        {
+                            "gift_name": "Whiskey Glasses",
+                            "details": "Set of 4, preferably crystal and dishwasher-safe.",
+                            "price": "£32.00",
+                            "link": "https://www.amazon.co.uk/whiskey-glasses"
+                        },
+                        {
+                            "gift_name": "Fitness Tracker",
+                            "details": "Garmin or Fitbit, any entry-level model.",
+                            "price": "£129.99",
+                            "link": "https://www.fitbit.com"
+                        }
+                    ]
+                },
+                {
+                    "username": "Grandma",
+                    "is_admin": false,
+                    "gifts": [
+                        {
+                            "gift_name": "Knitting Supplies",
+                            "details": "Yarn in pastel colours, and ergonomic knitting needles.",
+                            "price": "£29.99",
+                            "link": "https://www.hobbycraft.co.uk/knitting-supplies"
+                        },
+                        {
+                            "gift_name": "Cookbook",
+                            "details": "Jamie Oliver's '5 Ingredients' cookbook.",
+                            "price": "£14.99",
+                            "link": "https://www.waterstones.com/cookbook"
+                        }
+                    ]
+                },
+                {
+                    "username": "Cousin",
+                    "is_admin": false,
+                    "gifts": [
+                        {
+                            "gift_name": "Bluetooth Speaker",
+                            "details": "Preferably waterproof and portable.",
+                            "price": "£69.99",
+                            "link": "https://www.johnlewis.com/bluetooth-speaker"
+                        },
+                        {
+                            "gift_name": "Trainers",
+                            "details": "Nike or Adidas, UK size 8, any colour but white.",
+                            "price": "£79.99",
+                            "link": "https://www.nike.com/training-shoes"
+                        }
+                    ]   
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,206 @@
+body {
+    font-family: 'Arial', sans-serif;
+    /* Apply the sans-serif font globally */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+}
+
+/* General styling for table elements */
+th,
+td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+}
+
+/* Header styling */
+th {
+    background-color: #941d27;
+    /* Christmas red */
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Set a fixed width for the Details column */
+th:nth-child(2),
+td:nth-child(2) {
+    width:275px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* Set a fixed width for the Details column */
+th:nth-child(3),
+td:nth-child(3) {
+    width: 350px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+td:nth-child(3) {
+    max-width: 3200px;
+    overflow-wrap: break-word;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 150px;
+}
+
+/* Alternating row colors */
+tr:nth-child(even) {
+    background-color: #f1faee;
+    /* Light Christmas green */
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Fixed width for the Gift column */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 200px;
+}
+
+/* Link styling */
+a {
+    color: #1d3557; /* Deep blue for the links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* General button styles */
+.button,
+.logout,
+.nav-links .button {
+    padding: 12px 24px; /* Bigger buttons */
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    justify-content: space-between;
+}
+
+.button {
+    background-color: #4CAF50;
+    /* Green for general buttons */
+    color: white;
+}
+
+.button:hover {
+    background-color: #3a893c;
+    /* Darker green on hover */
+}
+
+.btn-link {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+    color: #0052a3;
+}
+
+.logout, .delete-btn {
+    background-color: #a8afa8;
+    /* Grey for logout button */
+    color: white;
+}
+
+.logout:hover, .delete-btn:hover {
+    background-color: #777c77;
+    /* Darker grey on hover */
+}
+
+/* Navigation links styling */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    /* Space between left and right buttons */
+    align-items: center;
+    margin-top: 20px;
+}
+
+.left-buttons,
+.right-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Styling for select dropdown */
+select {
+    padding: 5px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Purchased row styling */
+.purchased-by-other {
+    color: #c7cbcb;
+    font-weight: bold;
+}
+
+tr.purchased {
+    background-color: #c7cbcb !important;
+    /* Light green for purchased items */
+}
+
+tr.purchased:nth-child(even) {
+    background-color: #d8e5d9 !important; /* Slightly darker for even rows */
+}
+
+select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+/* Responsive styling for mobile devices */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    table {
+        font-size: 12px;
+        /* Further reduce table text */
+    }
+
+    th,
+    td {
+        display: block;
+        /* Stack table rows for small screens */
+        width: 100%;
+    }
+
+    th {
+        text-align: center;
+    }
+
+    .button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+

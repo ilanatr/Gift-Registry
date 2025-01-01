@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Family List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/list_styles.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ family.name }} - Family List</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-section">
+                <h2>Family Members</h2>
+                <ul class="member-list">
+                    {% for member in members %}
+                    <li>
+                        {{ member.username }}
+                        {% if member.is_family_admin %}
+                            <span class="admin-badge">Admin</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+                {% if current_user.is_family_admin %}
+                <div class="invite-section">
+                    <h3>Invite New Member</h3>
+                    <form method="POST" action="{{ url_for('invite_member') }}">
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Enter email address" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Invitation</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="dashboard-section">
+                <h2>Quick Links</h2>
+                <div class="quick-links">
+                    <a href="{{ url_for('my_list') }}" class="dashboard-link">
+                        <i class="fas fa-gift"></i>
+                        My Wish List
+                    </a>
+                    <a href="{{ url_for('family_list') }}" class="dashboard-link">
+                        <i class="fas fa-users"></i>
+                        Family Gift Lists
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

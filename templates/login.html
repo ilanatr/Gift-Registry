@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login_out_styles.css')}}">
+    </head>
+
+<body>
+    <div class="container">
+        <h1>🎁 Family Gift List</h1>
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+
+        {% if success %}
+        <div class="success-message">{{ success }}</div>
+        {% endif %}
+
+
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="button">Login</button>
+        </form>
+        <div class="links">
+            <a href="{{ url_for('reset_password') }}">Forgot password?</a>
+            <a href="{{ url_for('register_create_family') }}">Register</a>
+        </div>
+    </div>  
+</body>
+
+</html>
