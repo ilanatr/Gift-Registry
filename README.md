@@ -17,19 +17,21 @@ A Flask-based web application that helps families manage their gift lists and co
 ## Screenshots  
 
 ### Login Page  
-![Login Page](screenshots\login_page.png)  
+![Login Page](screenshots/login_page.png)  
 
 ### Create Family
-![Create Family Group](screenshots\add_new_family_member.png)
+![Create Family Group](screenshots/add_new_family_member.png)
+
 
 ### Add New Family Member
-![Add New Family Member](screenshots\add_new_family_member.png)
+![Add New Family Member](screenshots/add_new_family_member.png)
+
 
 ### Family Wish List  
-![Family Wish List](screenshots\family_wish_list.png)  
+![Family Wish List](screenshots/family_wish_list.png)  
 
 ### User Wish List
-![User Wish List](screenshots\user_wish_list.png)
+![User Wish List](screenshots/user_wish_list.png)
 
 
 ## Technology Stack
